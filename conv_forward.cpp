@@ -55,7 +55,7 @@ void conv_layer(int8 *input, int32 *output, int8 *kernel, int8 *bias, int *input
 						int cur_w = ind_w * stride - pad_w + count_w;
 						int cur_h = ind_h * stride - pad_h + count_h;
 						
-						if (cur_h >= 0 && cur_w >= 0){
+						if (cur_h >= 0 && cur_w >= 0 && cur_h<input_h && cur_w<input_w){
 							int input_offset = ind_batch * input_size1 + ind_channel * input_size0 + cur_h * input_w + cur_w;
 							cur_res += (int32)((*(input + input_offset)) * (*(kernel + ind_kernel * kernel_size + i)));
 						}
